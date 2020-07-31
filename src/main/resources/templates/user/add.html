@@ -3,27 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>New User</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
 </head>
 <body>
 
 </body>
+<div class="content">
+<h1>Register</h1>
 <form action="add" method="post">
     <table>
         <tr>
             <td><label>
                 Name:
-                <input type="text" name="username" th:value="${username}">
+                <input type="text" name="username" th:value="${user.username}">
             </label>
-                <p class="error" th:errors="${user.username}">
+                <p class="error" th:errors="${user.username}"></p>
             </td>
         </tr>
     <tr>
         <td>
             <label>
                 Email:
-                <input name="email" th:value="${email}">
+                <input name="email" th:value="${user.email}">
+
             </label>
-            <p class="error" th:errors="${user.email}">
+            <p class="error" th:errors="${user.email}"></p>
         </td>
     </tr>
     <tr>
@@ -31,8 +35,8 @@
             <label>
                 Password:
                 <input type="password" name="password">
-                <p class="error" th:errors="${user.password}">
             </label>
+            <p class="error" th:errors="${user.password}"></p>
         </td>
     </tr>
         <tr>
@@ -41,6 +45,7 @@
                 Verify Password:
                 <input type="password" name="verify">
             </label>
+            <p class="error" th:text="${errorPass}"></p>
         </td>
         </tr>
 <tr>
@@ -50,4 +55,5 @@
 </tr>
     </table>
 </form>
+</div>
 </html>

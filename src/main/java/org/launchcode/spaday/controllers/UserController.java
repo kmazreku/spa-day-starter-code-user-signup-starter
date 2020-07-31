@@ -19,20 +19,20 @@ public class UserController {
         return "user/index";
     }
     @GetMapping("add")
-    public String displayAddUserForm(){
-       return "user/add";
+    public String displayAddUserForm(Model model){
+        model.addAttribute(new User());
+        return "user/add";
     }
 
     @PostMapping("add")
     public String processAddUserForm(Model model, @ModelAttribute @Valid User user, Errors errors, String verify) {
         // add form submission handling code here
-
+        model.addAttribute("user" , user);
         if(errors.hasErrors() || !user.getPassword().equals(verify)){
-            model.addAttribute("username", user.getUsername());
-            model.addAttribute("email", user.getEmail());
+            model.addAttribute("errorPass", "Password and Verify Password should match.");
             return "user/add";
         }
-        model.addAttribute("user" , user);
+
         return "user/index";
 
     }
