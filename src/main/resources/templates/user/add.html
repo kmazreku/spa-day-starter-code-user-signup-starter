@@ -10,20 +10,20 @@
 <form action="add" method="post">
     <table>
         <tr>
-            <td><p th:text="${error}"  class="error"></p></td>
-        </tr>
-        <tr>
             <td><label>
                 Name:
                 <input type="text" name="username" th:value="${username}">
-            </label></td>
+            </label>
+                <p class="error" th:errors="${user.username}">
+            </td>
         </tr>
     <tr>
         <td>
             <label>
                 Email:
-                <input type="email" name="email" th:value="${email}">
+                <input name="email" th:value="${email}">
             </label>
+            <p class="error" th:errors="${user.email}">
         </td>
     </tr>
     <tr>
@@ -31,6 +31,7 @@
             <label>
                 Password:
                 <input type="password" name="password">
+                <p class="error" th:errors="${user.password}">
             </label>
         </td>
     </tr>
